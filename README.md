@@ -16,8 +16,6 @@
 Plugin ini menambahkan fitur **notifikasi email otomatis** setiap kali transaksi sirkulasi di SLiMS selesai (**pinjam, pengembalian, perpanjangan**).
 Email akan dikirim ke alamat email anggota sesuai data `member_email`.
 
-Oke, saya rapikan README kamu dengan tambahan **Syarat Penggunaan** dan bagian informasi author/plugin.
-
 ---
 
 ## 📋 Syarat Penggunaan
