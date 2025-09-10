@@ -1,4 +1,3 @@
-
 <?php
 /**
  * Plugin Name: Circulation Email Notifier
@@ -20,6 +19,21 @@ if (!defined('INDEX_AUTH')) { die('No direct access'); }
 if (!function_exists('circ_notify_log')) {
   function circ_notify_log($msg) {
     @file_put_contents(__DIR__.'/debug.log', '['.date('Y-m-d H:i:s')."] ".$msg.PHP_EOL, FILE_APPEND);
+  }
+}
+
+/**
+ * Helper untuk munculkan popup toastr dari plugin
+ */
+if (!function_exists('circ_notify_toastr')) {
+  function circ_notify_toastr($msg, $type = 'success') {
+    // kalau helper toastr() ada
+    if (function_exists('toastr')) {
+        toastr($msg)->$type();
+    } else {
+        // fallback echo JS agar tampil di parent admin page
+        echo "<script>parent.toastr && parent.toastr.{$type}('".addslashes($msg)."');</script>";
+    }
   }
 }
 
@@ -96,11 +110,14 @@ Plugins::getInstance()->register(Plugins::CIRCULATION_AFTER_SUCCESSFUL_TRANSACTI
                 ->subject($subject)
                 ->message($tpl->getContents())
                 ->send();
+
             circ_notify_log('Mail sent OK via \\SLiMS\\Mail');
+            circ_notify_toastr('Email sudah terkirim ke '.$member->member_email, 'success');
             return;
         }
     } catch (\Throwable $e) {
         circ_notify_log('SLiMS\\Mail error: '.$e->getMessage());
+        circ_notify_toastr('Gagal mengirim email ke '.$member->member_email, 'error');
     }
 
     /**
@@ -146,10 +163,12 @@ Plugins::getInstance()->register(Plugins::CIRCULATION_AFTER_SUCCESSFUL_TRANSACTI
 
             $m->send();
             circ_notify_log('Mail sent OK via PHPMailer fallback');
+            circ_notify_toastr('Email sudah terkirim ke '.$member->member_email, 'success');
             return;
         }
     } catch (\Throwable $e) {
         circ_notify_log('PHPMailer fallback error: '.$e->getMessage());
+        circ_notify_toastr('Gagal mengirim email ke '.$member->member_email, 'error');
     }
 
     circ_notify_log('All mail methods failed.');
