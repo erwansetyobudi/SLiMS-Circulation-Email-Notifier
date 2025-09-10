@@ -124,5 +124,11 @@ GPL v3 — sama dengan SLiMS.
 
 ---
 
+## Screen Shoot
+<img width="1346" height="619" alt="image" src="https://github.com/user-attachments/assets/d4eb98d4-c36a-49b3-aa10-ddffa1c792cf" />
+<img width="1350" height="683" alt="image" src="https://github.com/user-attachments/assets/3b821f15-3954-4515-aef1-61a58780115d" />
+
+
+
 
 
