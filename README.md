@@ -1,17 +1,39 @@
-## Author
-**Name**: Erwan Setyo Budi  
-**Email**: erwans818@gmail.com
+## 👤 Author
 
-## Plugin Information
-- **Plugin Name**: Circulation-Email-Notifier
-- **Author**: Erwan Setyo Budi
+* **Name**: Erwan Setyo Budi
+* **Email**: [erwans818@gmail.com](mailto:erwans818@gmail.com)
 
+---
+
+## 🔖 Plugin Information
+
+* **Plugin Name**: Circulation-Email-Notifier
+* **Author**: Erwan Setyo Budi
 ---
 
 # Circulation Email Notifier for SLiMS
 
 Plugin ini menambahkan fitur **notifikasi email otomatis** setiap kali transaksi sirkulasi di SLiMS selesai (**pinjam, pengembalian, perpanjangan**).
 Email akan dikirim ke alamat email anggota sesuai data `member_email`.
+
+Oke, saya rapikan README kamu dengan tambahan **Syarat Penggunaan** dan bagian informasi author/plugin.
+
+---
+
+## 📋 Syarat Penggunaan
+
+Sebelum menggunakan plugin ini, pastikan konfigurasi email sudah benar:
+
+1. **Aktifkan IMAP dan POP3** pada akun email yang digunakan sebagai pengirim.
+2. **Buat sandi aplikasi** (App Password) khusus pada akun Google Anda melalui tautan: [https://myaccount.google.com/apppasswords](https://myaccount.google.com/apppasswords)
+3. **Setting Email di SLiMS**:
+
+   * Login sebagai **Super Admin** SLiMS.
+   * Buka menu **Sistem → Pengaturan Surel**.
+   * Masukkan konfigurasi SMTP sesuai email Anda.
+   * Lakukan **uji kirim email** hingga berhasil, karena plugin ini akan menggunakan konfigurasi yang sama.
+
+---
 
 ## ✨ Fitur
 
@@ -21,10 +43,12 @@ Email akan dikirim ke alamat email anggota sesuai data `member_email`.
 * Mendukung **pengaturan mail resmi SLiMS** (`System → Mail Setting`).
 * Fallback ke **PHPMailer** jika facade `SLiMS\Mail` tidak tersedia.
 
+---
+
 ## 📂 Struktur Plugin
 
 ```
-plugins/circ_email_notify/
+plugins/SLiMS-Circulation-Email-Notifier/
 │
 ├── circ_email_notify.plugin.php   # File registrasi plugin
 ├── index.php                      # Hook & logika utama
@@ -32,9 +56,11 @@ plugins/circ_email_notify/
 └── debug.log                      # (otomatis) log debug pengiriman email
 ```
 
+---
+
 ## ⚙️ Instalasi
 
-1. Copy folder `circ_email_notify` ke dalam direktori `plugins/` SLiMS.
+1. Copy folder `circ_email_notify` ke dalam direktori `plugins/` SLiMS:
 
    ```
    slims/
@@ -48,17 +74,17 @@ plugins/circ_email_notify/
 2. Login ke SLiMS sebagai admin → buka **System → Plugins**.
    Pastikan plugin **Circulation Email Notifier** muncul dan aktif.
 
-3. Pastikan **Mail Setting** sudah dikonfigurasi:
+3. Pastikan **Mail Setting** sudah dikonfigurasi dan berhasil diuji.
 
-   * Masuk ke **System → Mail Setting**.
-   * Isi SMTP server, port, username, password, From address, dan lakukan test mail.
-   * Jika test mail sukses, plugin ini akan menggunakan setting yang sama.
+---
 
 ## ▶️ Penggunaan
 
 1. Lakukan transaksi sirkulasi seperti biasa (scan barcode anggota → pinjam / kembalikan buku).
 2. Klik tombol **Finish Transaction**.
 3. Anggota akan otomatis menerima email berisi detail transaksi.
+
+---
 
 ## 🛠️ Debugging
 
@@ -79,18 +105,24 @@ Contoh log sukses:
 [2025-09-10 12:55:32] Mail sent OK via \SLiMS\Mail
 ```
 
+---
+
 ## 🖼️ Kustomisasi Email
 
 * Edit `transactionMail.php` untuk mengubah tampilan email.
-* Kamu bisa menambahkan:
+* Anda bisa menambahkan:
 
   * Logo perpustakaan
   * Footer khusus (misalnya link ke website)
   * Gaya CSS tambahan
+
+---
 
 ## 📜 Lisensi
 
 GPL v3 — sama dengan SLiMS.
 
 ---
+
+
 
