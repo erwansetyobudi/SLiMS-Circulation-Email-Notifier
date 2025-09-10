@@ -1,12 +1,11 @@
 <?php
 /**
  *  File name : transactionMail.php
- *  Author    : You
+ *  Author    : Erwan Setyo Budi
  *  Desc      : Template e-mail ringkasan transaksi (pinjam, pengembalian, perpanjangan).
  *  Plugin Name: Circulation Email Notifier
  *  Plugin URI: https://github.com/erwansetyobudi/Circulation-Email-Notifier
  *  Version: 1.0.0
- *  Author: Erwan Setyo Budi
  *  Author URI: https://github.com/erwansetyobudi/
  */
 
@@ -138,7 +137,7 @@ class transactionMail extends TemplateContract
         $returnBlock = $this->buildTableBlock($this->receipt['return'] ?? [], $mapReturn, __('Returns'));
         $extendBlock = $this->buildTableBlock($this->receipt['extend'] ?? [], $mapExtend, __('Extensions'));
 
-        // rakit HTML (tanpa wrapper khusus; jika Anda ingin "nebeng" notemplate_page_tpl.php, bisa disuntikkan di Mailer)
+        // rakit HTML
         $html = <<<HTML
         <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,'Open Sans','Helvetica Neue',sans-serif; padding:24px;">
             <div style="margin-bottom:12px">
@@ -161,3 +160,4 @@ class transactionMail extends TemplateContract
         return $this;
     }
 }
+
